@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\BackendCore.csproj": {}
+    "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\BackendCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\BackendCore.csproj": {
+    "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\BackendCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\BackendCore.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\BackendCore.csproj",
         "projectName": "BackendCore",
-        "projectPath": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\BackendCore.csproj",
-        "packagesPath": "C:\\Users\\Jossy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\obj\\",
+        "projectPath": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\BackendCore.csproj",
+        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jossy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -57,6 +57,14 @@
             "MailKit": {
               "target": "Package",
               "version": "[4.13.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.1, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -100,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
