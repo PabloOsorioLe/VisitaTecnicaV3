@@ -1,0 +1,253 @@
+<div class="container mt-0 mb-4">
+  <div class="card shadow rounded p-3">
+    <form>
+      <!-- Campos principales -->
+      <div class="mb-2">
+        <label for="cliente" class="form-label">Nombre de Cliente</label>
+        <input
+          type="text"
+          id="cliente"
+          class="form-control form-control-sm pdf-text-height"
+          [(ngModel)]="informe.cliente"
+          name="cliente"
+        />
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-12 col-sm-6 mb-2 mb-sm-0">
+          <label for="fecha" class="form-label">Fecha</label>
+          <input
+            type="date"
+            id="fecha"
+            class="form-control form-control-sm pdf-text-height"
+            [(ngModel)]="informe.fecha"
+            name="fecha"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <label for="direccion" class="form-label">Dirección - Faena Lugar</label>
+          <input
+            type="text"
+            id="direccion"
+            class="form-control form-control-sm pdf-text-height"
+            [(ngModel)]="informe.direccion"
+            name="direccion"
+          />
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-12 col-sm-6 mb-2 mb-sm-0">
+          <label for="equipo" class="form-label">Equipo</label>
+          <input
+            type="text"
+            id="equipo"
+            class="form-control form-control-sm pdf-text-height"
+            [(ngModel)]="informe.equipo"
+            name="equipo"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <label for="horas" class="form-label">Horas</label>
+          <input
+            type="number"
+            id="horas"
+            class="form-control form-control-sm pdf-text-height"
+            [(ngModel)]="informe.horas"
+            name="horas"
+          />
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label for="estado" class="form-label">Estado de la Máquina</label>
+        <input
+          type="text"
+          id="estado"
+          class="form-control form-control-sm pdf-text-height"
+          [(ngModel)]="informe.estado"
+          name="estado"
+        />
+      </div>
+
+      <div class="mb-2">
+        <label for="trabajos" class="form-label">Trabajos Efectuados</label>
+        <input
+          type="text"
+          id="trabajos"
+          class="form-control form-control-sm pdf-text-height"
+          [(ngModel)]="informe.trabajos"
+          name="trabajos"
+        />
+      </div>
+
+      <div class="mb-2">
+        <label for="observaciones" class="form-label">Observaciones</label>
+        <input
+          type="text"
+          id="observaciones"
+          class="form-control form-control-sm pdf-text-height"
+          [(ngModel)]="informe.observaciones"
+          name="observaciones"
+        />
+      </div>
+
+      <!-- Lubricantes empleados -->
+      <div class="card shadow-sm rounded p-2 mb-3">
+        <h6 class="mb-2">Lubricantes empleados</h6>
+        <div class="row gx-2">
+          <div class="col-6 col-sm">
+            <label class="form-label small">Cárter</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.lubricantes.carter"
+              name="carter"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Transmisión</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.lubricantes.transmision"
+              name="transmision"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Caja</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.lubricantes.caja"
+              name="caja"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Diferencial</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.lubricantes.diferencial"
+              name="diferencial"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Hidráulico</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.lubricantes.hidraulico"
+              name="hidraulico"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Estado Filtros -->
+      <div class="card shadow-sm rounded p-2 mb-3">
+        <h6 class="mb-2">Estado Filtros</h6>
+        <div class="row gx-2">
+          <div class="col-6 col-sm">
+            <label class="form-label small">Motor</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.filtros.motor"
+              name="motor"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Aire</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.filtros.aire"
+              name="aire"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Convertidor</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.filtros.convertidor"
+              name="convertidor"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Hidráulico</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.filtros.hidraulico"
+              name="filtroHidraulico"
+            />
+          </div>
+          <div class="col-6 col-sm">
+            <label class="form-label small">Respiradores</label>
+            <input
+              type="text"
+              class="form-control form-control-sm pdf-text-height"
+              [(ngModel)]="informe.filtros.respiradores"
+              name="respiradores"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Firma Digital y Correo -->
+      <div class="card shadow-sm rounded p-3 mb-3 text-center">
+        <h6 class="mb-2">Firma Digital</h6>
+        <div
+          class="firma-wrapper mb-2 mx-auto"
+          style="max-width: 400px; width: 100%;"
+        >
+          <canvas
+            #firmaCanvas
+            class="firma-canvas"
+            style="width: 100%; height: auto; max-height: 250px; border: 1px solid #ccc; border-radius: 4px;"
+          ></canvas>
+        </div>
+        <div class="mb-2 d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-outline-danger btn-sm me-2 no-print"
+            (click)="limpiarFirma()"
+          >
+            Limpiar Firma
+          </button>
+        </div>
+        <label for="correo" class="form-label">Correo Electrónico</label>
+        <input
+          type="email"
+          id="correo"
+          class="form-control form-control-sm pdf-text-height"
+          [(ngModel)]="informe.correo"
+          name="correo"
+        />
+      </div>
+
+      <!-- Botones Enviar Correo y Descargar PDF -->
+      <div class="text-center mt-3">
+        <div class="d-inline-flex justify-content-center flex-wrap gap-2">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm no-print"
+            (click)="enviarCorreo()"
+          >
+            Enviar Correo
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm no-print"
+            (click)="descargarPDF()"
+          >
+            Descargar PDF
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

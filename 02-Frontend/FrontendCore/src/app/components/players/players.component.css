@@ -1,0 +1,10 @@
+.players-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.player-card {
+  width: 140px;
+  text-align: center;
+}

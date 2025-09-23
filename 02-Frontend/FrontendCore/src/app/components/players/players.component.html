@@ -1,0 +1,15 @@
+<h3>Jugadores del Barcelona</h3>
+
+<div *ngIf="players.length === 0">Cargando jugadores...</div>
+
+<div class="players-list">
+  <div *ngFor="let player of players" class="player-card">
+    <img 
+      *ngIf="player.strThumb" 
+      [src]="player.strThumb" 
+      [alt]="player.strPlayer" 
+      width="120" 
+      height="auto" />
+    <p>{{ player.strPlayer }}</p>
+  </div>
+</div>

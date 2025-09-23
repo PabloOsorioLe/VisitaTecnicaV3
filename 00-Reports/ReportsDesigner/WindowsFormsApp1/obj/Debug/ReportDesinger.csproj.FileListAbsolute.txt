@@ -1,0 +1,9 @@
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\obj\Debug\ReportDesinger.csproj.AssemblyReference.cache
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\obj\Debug\ReportDesinger.csproj.GenerateResource.cache
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\obj\Debug\ReportDesinger.csproj.CoreCompileInputs.cache
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Jossy\Documents\VisitaTecnicaV2\00-Reports\ReportsDesigner\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

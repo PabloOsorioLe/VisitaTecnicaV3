@@ -1,0 +1,170 @@
+<div class="container-fluid px-4 mt-0 pt-0 mb-0">
+  <!-- Contenedor que permite ancho completo -->
+  <div class="full-width-container">
+    <div class="container mb-0">
+    </div>
+
+    <!-- Botón Crear Reunión igual que Nueva Visita -->
+    <div class="d-flex justify-content-end justify-content-md-end mb-2">
+      <button (click)="crearNuevaReunion()" class="btn btn-success w-100 w-md-auto">
+        <i class="bi bi-plus-lg"></i> Crear Reunión
+      </button>
+    </div>
+
+    <!-- Tabla para escritorio -->
+    <div class="table-responsive table-wrapper d-none d-md-block">
+      <table class="table table-striped table-hover w-100">
+        <thead class="table-primary text-center">
+          <tr>
+            <th style="width: 3%;">#</th>
+            <th style="width: 18%;">Título</th>
+            <th style="width: 20%;">Glosa</th>
+            <th style="width: 20%;">Detalle</th>
+            <th style="width: 11%;">Participante(s)</th>
+            <th style="width: 13%;">Fecha</th>
+            <th style="width: 9%;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of reunionesPaginadas">
+            <td colspan="7" class="p-0">
+              <div
+                class="row-wrapper"
+                [class.eliminando]="r.eliminando"
+                [class.nueva-reunion]="r.nueva && !r.guardando"
+                [class.guardando]="r.guardando"
+                [class.bajar]="r.bajando"
+                [class.fade-out]="r.fadeOut"
+              >
+                <table class="w-100 m-0">
+                  <tr>
+                    <td style="width: 3%;">{{ r.contador }}</td>
+                    <td style="width: 18%;">
+                      <textarea [(ngModel)]="r.titulo" class="form-control form-control-sm" rows="4"></textarea>
+                    </td>
+                    <td style="width: 20%;">
+                      <textarea [(ngModel)]="r.glosa" class="form-control form-control-sm" rows="4"></textarea>
+                    </td>
+                    <td style="width: 20%;">
+                      <textarea [(ngModel)]="r.glosaDetalle" class="form-control form-control-sm" rows="4"></textarea>
+                    </td>
+                    <td style="width: 14%; min-width: 180px;">
+                      <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Participante(s)</mat-label>
+                        <mat-select [(ngModel)]="r.participante" multiple>
+                          <mat-option *ngFor="let p of participantes" [value]="p">
+                            {{ p }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td style="width: 13%;">
+                      <input
+                        type="text"
+                        class="form-control"
+                        mwlFlatpickr
+                        [(ngModel)]="r.fecha"
+                        [altInput]="true"
+                        [altFormat]="'d-m-Y'"
+                        [dateFormat]="'d-m-Y'"
+                        [disableMobile]="true"
+                      />
+                    </td>
+                    <td style="width: 9%;">
+                      <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-success btn-sm" (click)="guardar(r)">Guardar</button>
+                        <button class="btn btn-danger btn-sm" (click)="eliminar(r)">Eliminar</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cards para móvil -->
+    <div class="d-block d-md-none">
+      <div
+        *ngFor="let r of reunionesPaginadas"
+        class="card mb-3 shadow-sm"
+        [class.eliminando]="r.eliminando"
+        [class.nueva-reunion]="r.nueva && !r.guardando"
+        [class.guardando]="r.guardando"
+        [class.bajar]="r.bajando"
+        [class.fade-out]="r.fadeOut"
+      >
+        <div class="card-body">
+          <h5 class="card-title">
+            #{{ r.contador }} - {{ r.titulo }}
+          </h5>
+
+          <div class="mb-2">
+            <label class="form-label">Fecha</label>
+            <input
+              type="text"
+              class="form-control"
+              mwlFlatpickr
+              [(ngModel)]="r.fecha"
+              [altInput]="true"
+              [altFormat]="'d-m-Y'"
+              [dateFormat]="'d-m-Y'"
+              [locale]="'es'"
+              [monthSelectorType]="'dropdown'"
+              [disableMobile]="true"
+              readonly
+            />
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Glosa</label>
+            <textarea [(ngModel)]="r.glosa" class="form-control form-control-sm" rows="3"></textarea>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Detalle</label>
+            <textarea [(ngModel)]="r.glosaDetalle" class="form-control form-control-sm" rows="3"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Participante(s)</label>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Participante(s)</mat-label>
+              <mat-select [(ngModel)]="r.participante" multiple>
+                <mat-option *ngFor="let p of participantes" [value]="p">
+                  {{ p }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-success btn-sm flex-fill" (click)="guardar(r)">Guardar</button>
+            <button class="btn btn-danger btn-sm flex-fill" (click)="eliminar(r)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginación -->
+    <nav *ngIf="totalPaginas > 1" aria-label="Paginación reuniones" class="mt-3">
+      <ul class="pagination justify-content-center flex-wrap">
+        <li class="page-item" [class.disabled]="paginaActual === 1">
+          <a class="page-link" href="#" (click)="cambiarPagina(paginaActual - 1); $event.preventDefault()">
+            Anterior
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let p of paginas" [class.active]="p === paginaActual">
+          <a class="page-link" href="#" (click)="cambiarPagina(p); $event.preventDefault()">{{ p }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="paginaActual === totalPaginas">
+          <a class="page-link" href="#" (click)="cambiarPagina(paginaActual + 1); $event.preventDefault()">
+            Siguiente
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
