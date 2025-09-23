@@ -94,11 +94,12 @@ builder.Services.AddCors(options =>
                 "http://localhost:4200",
                 "https://fullpega.cl",
                 "https://www.fullpega.cl",
-                "https://visitatecnicav2.onrender.com",
-                "https://visita-tecnica-v2-robb.vercel.app"
+                "https://visitatecnicav3.onrender.com",
+                "https://visita-tecnica-v3.vercel.app"
             )
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials(); // En caso de usar cookies o autorizaciones con credenciales
     });
 });
 
@@ -151,6 +152,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();  // Mapear controladores
+
+// Esto es importante para login y otros endpoints públicos:
+// Marca los métodos login con [AllowAnonymous] para evitar bloqueo
 
 // Mantener solo endpoints auxiliares que no tienes en controlador
 app.MapPost("/api/validate-password", async (

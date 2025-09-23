@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\",
+  "WorkspaceRootPath": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|c:\\users\\jossy\\documents\\visitatecnicav2\\01-backend\\backendcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|c:\\users\\pablo\\onedrive\\documentos\\repositorios\\visitatecnicav3\\01-backend\\backendcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|solutionrelative:backendcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Program.cs",
               "RelativeDocumentMoniker": "BackendCore\\Program.cs",
-              "ToolTip": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\01-Backend\\BackendCore\\Program.cs",
+              "ToolTip": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Program.cs",
               "RelativeToolTip": "BackendCore\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAUwJsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T21:26:22.514Z",
               "EditorCaption": ""
