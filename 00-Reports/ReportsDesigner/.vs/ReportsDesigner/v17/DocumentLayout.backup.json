@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\00-Reports\\ReportsDesigner\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98056450-9AE2-4BF4-9CB6-1636138D4392}|WindowsFormsApp1\\ReportDesinger.csproj|c:\\users\\jossy\\documents\\visitatecnicav2\\00-reports\\reportsdesigner\\windowsformsapp1\\visitatecnica\\rptinformetecnico.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
+      "RelativeMoniker": "D:0:0:{98056450-9AE2-4BF4-9CB6-1636138D4392}|WindowsFormsApp1\\ReportDesinger.csproj|solutionrelative:windowsformsapp1\\visitatecnica\\rptinformetecnico.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RptInformeTecnico.rdlc [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\00-Reports\\ReportsDesigner\\WindowsFormsApp1\\VisitaTecnica\\RptInformeTecnico.rdlc",
+              "RelativeDocumentMoniker": "WindowsFormsApp1\\VisitaTecnica\\RptInformeTecnico.rdlc",
+              "ToolTip": "C:\\Users\\Jossy\\Documents\\VisitaTecnicaV2\\00-Reports\\ReportsDesigner\\WindowsFormsApp1\\VisitaTecnica\\RptInformeTecnico.rdlc [Dise\u00F1o]",
+              "RelativeToolTip": "WindowsFormsApp1\\VisitaTecnica\\RptInformeTecnico.rdlc [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
+              "WhenOpened": "2025-06-26T01:49:07Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

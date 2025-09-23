@@ -1,0 +1,59 @@
+/* Angular Material Theme si usas uno */
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+
+/* ====== Estilos de Navbar ====== */
+.custom-navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  margin-left: 1rem;
+}
+
+.nav-link.active {
+  color: #ffc107 !important;
+}
+
+/* ====== Estilos Globales ====== */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
+
+  /* Mejora experiencia táctil en móviles */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* Elimina scroll por padding-top excesivo */
+body {
+  padding-top: 0;
+}
+
+/* ====== Layout raíz del proyecto Angular ====== */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura ocupar toda la altura visible */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ====== SweetAlert personalizado ====== */
+.swal2-popup-custom {
+  background-color: #2f2f2f !important;
+  color: #fff !important;
+}
+
+.swal2-container {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}

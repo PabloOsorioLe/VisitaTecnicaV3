@@ -1,0 +1,235 @@
+body {
+  margin: 0;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Fondo oscuro con tonos azules suaves */
+.login-background {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10,10,10,0.9);
+  z-index: 0; /* que esté debajo del login */
+  pointer-events: none; /* para que no interfiera con clicks */
+  /* los gradientes y animaciones que tengas */
+}
+
+.login-background::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle at top left, rgba(50, 80, 140, 0.5), transparent 70%);
+  animation: azulRespira 8s ease-in-out infinite;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-background::after {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+  right: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle at bottom right, rgba(40, 60, 120, 0.4), transparent 70%);
+  animation: azulRespira 8s ease-in-out infinite;
+  animation-delay: 4s;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes azulRespira {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+/* Contenedor del login con fondo tipo panel Windows, borde y sombra azul */
+.login-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 90%;          
+  max-width: 380px;     /* ✅ límite máximo para PC grande */
+  padding: 2rem;        /* ✅ padding responsive */
+  background: rgba(20,20,20,0.75);
+  color: white;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(50, 90, 170, 0.5);
+  box-shadow: 0 0 15px rgba(50, 90, 170, 0.7);
+}
+
+/* Etiquetas */
+.login-container .form-label {
+  color: #ccc;
+}
+
+/* Inputs */
+.login-container .form-control {
+  background-color: rgba(50, 50, 50, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eee;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.login-container .form-control:focus {
+  background-color: rgba(50, 50, 50, 0.8);
+  border-color: #3565c1; /* azul más vivo */
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Placeholder */
+.login-container .form-control::placeholder {
+  color: #bbb;
+}
+
+/* Botón Ingresar con clases propias para poder controlar */
+.btn-login {
+  background-color: #3565c1; /* azul vivo */
+  box-shadow: 0 0 10px rgba(53, 101, 193, 0.8);
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+}
+
+.btn-login:hover {
+  background-color: #254d8a; /* azul oscuro */
+  box-shadow: 0 0 15px rgba(37, 77, 138, 0.9);
+  color: rgba(255, 255, 255, 0.95); /* un poco más claro al hover */
+}
+
+/* Botón para mostrar/ocultar contraseña */
+.login-container .btn-outline-secondary {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ddd;
+}
+
+.login-container .btn-outline-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Link */
+.login-container a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-container a:hover {
+color: #c0d8ff; /* azul un poco más claro al pasar el mouse */
+  text-decoration: underline;
+}
+
+/* Quitar iconos nativos de mostrar contraseña */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-text-security {
+  -webkit-text-security: disc;
+}
+
+input[type="password"]::-webkit-password-toggle-button {
+  display: none !important;
+}
+
+
+/* Tamaño y padding más pequeño */
+.swal2-popup-custom {
+  font-size: 0.9rem !important;
+  padding: 1.2rem !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.4); /* sombra azul suave */
+}
+
+.swal2-title-custom {
+  font-weight: 600 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.swal2-confirm-custom {
+  background-color: #3399ff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 0.4rem 1.2rem !important;
+  color: white !important;
+  border-radius: 6px !important;
+}
+
+.swal2-confirm-custom:hover {
+  background-color: #1a73e8 !important;
+}
+
+@media (max-width: 576px) {
+  .login-container {
+    padding: 1.5rem;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-login {
+    font-size: 1rem;
+    padding: 0.75rem;
+    /* texto en azul más apagado */
+  color: rgba(255, 255, 255, 0.85);
+  /* mantén el fondo original */
+  background-color: #3565c1;
+  box-shadow: 0 0 10px rgba(53, 101, 193, 0.8);
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  }
+}
+.scrollable-form-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+}
+
+
+.swal2-container.mi-overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important; /* Más oscuro */
+}
+
+.swal2-popup.mi-alerta {
+  background-color: #2f2f2f !important;
+  color: #fff !important;
+}
+
+.btn-password-toggle {
+  background-color: transparent !important;  /* Fondo transparente */
+  border: 1px solid rgba(255, 0, 0, 0.5);   /* Borde rojo suave */
+  color: rgba(255, 0, 0, 0.7);              /* Color rojo suave para icono */
+  padding: 0.25rem 0.5rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-password-toggle:hover {
+  background-color: transparent !important; /* Sin fondo al pasar mouse */
+  border-color: rgba(255, 0, 0, 0.8);
+  color: rgba(255, 0, 0, 1);
+}
+

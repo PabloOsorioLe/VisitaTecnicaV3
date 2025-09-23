@@ -1,0 +1,91 @@
+/* Cards y textos */
+.card {
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+h6 {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #004080;
+}
+
+label {
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+input {
+  border-radius: 4px;
+}
+
+.form-control-sm {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  box-sizing: border-box;
+  min-height: 2em;
+}
+
+.firma-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.firma-canvas {
+  border: 2px solid #333;
+  border-radius: 4px;
+  background: #fff;
+  touch-action: none;
+  width: 400px;
+  height: 150px;
+}
+
+/* Control visibilidad impresión */
+.no-print {
+  display: block;
+}
+
+.print-only {
+  display: none;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  padding: 4px 6px;
+  border-radius: 4px;
+  min-height: 2em;
+  display: inline-block;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: inline !important;
+  }
+}
+/* Ajuste general para inputs en PDF: mayor altura y line-height */
+.pdf-text-height {
+  height: 2.6em !important;      /* un poco más alto */
+  padding-top: 0.5em !important; /* más espacio arriba */
+  padding-bottom: 0.5em !important; /* más espacio abajo */
+  line-height: 1.4 !important;   /* espacio para letras descendentes */
+  font-size: 0.9rem !important;  /* tamaño de fuente un poco más grande */
+  box-sizing: border-box !important;
+}
+
+.pdf-text-height-active {
+  height: 3.2em !important;      /* aun más alto para PDF */
+  padding-top: 0.6em !important;
+  padding-bottom: 0.6em !important;
+  line-height: 1.6 !important;
+  font-size: 1rem !important;
+  box-sizing: border-box !important;
+}

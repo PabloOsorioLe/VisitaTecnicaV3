@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Visita Técnica V2</title>
+  <base href="/">
+
+  <!-- ✅ Meta viewport para móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- ✅ Icono y manifest -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+
+  <!-- ✅ Apple iOS support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Visita Técnica">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+
+  <!-- ✅ Bootstrap & fuentes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- ✅ Estilos para evitar scroll y comportamiento de navegador -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      overscroll-behavior-y: none;
+      background-color: #fafafa;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    body.mat-typography {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    app-root {
+      display: block;
+      margin-top: 4px;
+      padding: 0 !important;
+    }
+  </style>
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this applicatio
