@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API VisitaTecnicaV2",
+    "title": "API VisitaTecnicaV3",
     "version": "v1"
   },
   "paths": {
