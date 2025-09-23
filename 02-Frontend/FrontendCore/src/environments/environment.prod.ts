@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://visitatecnicav2.onrender.com/api'
+  apiUrl: 'https://visitatecnicav3.onrender.com/api'
 };
 
