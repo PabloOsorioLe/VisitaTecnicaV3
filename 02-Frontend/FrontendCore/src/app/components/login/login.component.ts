@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ) {}
 
   iniciarSesion(): void {
+    console.log(`Intentando login con usuario: ${this.usuario}`);
+
     if (!this.usuario || !this.password) {
+      console.warn('Campos usuario o contraseña vacíos');
       Swal.fire({
         icon: 'warning',
         title: 'Campos requeridos',
@@ -38,40 +41,55 @@ export class LoginComponent implements OnInit, AfterViewInit {
       password: this.password
     };
 
+    console.log('Enviando payload al backend:', loginPayload);
+
     this.http.post<{ token: string }>('/api/auth/login', loginPayload).subscribe({
       next: (response) => {
-        sessionStorage.setItem('token', response.token);
+        console.log('Respuesta recibida del backend:', response);
+        if (response.token) {
+          sessionStorage.setItem('token', response.token);
 
-        Swal.fire({
-          icon: 'success',
-          title: 'Bienvenido',
-          text: 'Inicio de sesión exitoso',
-          timer: 1500,
-          showConfirmButton: false,
-          width: '350px',
-          background: 'rgba(24, 24, 24, 0.85)',
-          color: '#99caff',
-          iconColor: '#3399ff',
-          customClass: {
-            popup: 'swal2-popup-custom',
-            title: 'swal2-title-custom',
-            confirmButton: 'swal2-confirm-custom'
-          }
-        });
+          Swal.fire({
+            icon: 'success',
+            title: 'Bienvenido',
+            text: 'Inicio de sesión exitoso',
+            timer: 1500,
+            showConfirmButton: false,
+            width: '350px',
+            background: 'rgba(24, 24, 24, 0.85)',
+            color: '#99caff',
+            iconColor: '#3399ff',
+            customClass: {
+              popup: 'swal2-popup-custom',
+              title: 'swal2-title-custom',
+              confirmButton: 'swal2-confirm-custom'
+            }
+          });
 
-        setTimeout(() => {
-          this.router.navigate(['/visitas']);
-          this.idleService.startWatching();
-        }, 1500);
+          setTimeout(() => {
+            console.log('Navegando a /visitas');
+            this.router.navigate(['/visitas']);
+            this.idleService.startWatching();
+          }, 1500);
+        } else {
+          console.error('Token no recibido en la respuesta');
+        }
       },
       error: (err) => {
+        console.error('Error en la llamada HTTP:', err);
+
         let mensaje = 'Problemas de conexión con el servidor';
+
         if (err.status === 401) {
           mensaje = 'Clave inválida o usuario incorrecto';
         } else if (err.status === 404) {
           mensaje = 'Servicio no encontrado. Verifica conexión de frontend y backend.';
-        } else if (err.error && typeof err.error === 'string') {
-          mensaje = err.error;
+        } else if (err.error) {
+          if (typeof err.error === 'string') {
+            mensaje = err.error;
+          } else if (err.error.message) {
+            mensaje = err.error.message;
+          }
         }
 
         Swal.fire({
@@ -95,6 +113,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    console.log('LoginComponent OnInit');
+
     sessionStorage.clear();
 
     history.pushState(null, '', location.href);
@@ -110,6 +130,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         this.deferredPrompt = e;
+        console.log('Evento beforeinstallprompt capturado');
 
         Swal.fire({
           toast: true,
@@ -127,6 +148,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
           }
         }).then((result) => {
           if (result.isConfirmed && this.deferredPrompt) {
+            console.log('Usuario aceptó instalar la app');
             this.deferredPrompt.prompt();
             this.deferredPrompt.userChoice.then(() => {
               this.deferredPrompt = null;
@@ -134,6 +156,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
           }
 
           if (result.dismiss === Swal.DismissReason.cancel) {
+            console.log('Usuario canceló instalación PWA');
             localStorage.setItem('pwa-dismissed', 'true');
           }
         });
@@ -156,6 +179,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         timer: 6000
       }).then(result => {
         if (result.dismiss === Swal.DismissReason.cancel) {
+          console.log('Usuario canceló mensaje instalación iOS');
           localStorage.setItem('ios-dismissed', 'true');
         }
       });
@@ -166,6 +190,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       if (this.usuarioInputRef) {
         this.usuarioInputRef.nativeElement.focus();
+        console.log('Input usuario enfocado');
       }
     }, 300);
   }
@@ -174,6 +199,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const target = event.target as HTMLElement;
     setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      console.log(`Scroll a input: ${target.id}`);
     }, 300);
   }
 }

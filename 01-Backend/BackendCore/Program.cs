@@ -17,7 +17,6 @@ using Microsoft.AspNetCore.Mvc;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
-// Registrar fuente personalizada SIN alias
 var fontPath = Path.Combine(AppContext.BaseDirectory, "Fonts", "OpenSans-Regular.ttf");
 
 if (!File.Exists(fontPath))
@@ -31,24 +30,22 @@ else
 }
 
 var builder = WebApplication.CreateBuilder(args);
-// Soporte para páginas de código extendidas (necesario para RDLC)
+
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-// Configurar Kestrel para aceptar cuerpos de petición grandes (hasta 20 MB)
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     serverOptions.Limits.MaxRequestBodySize = 20 * 1024 * 1024;
 
     var portEnv = Environment.GetEnvironmentVariable("PORT");
     var port = !string.IsNullOrEmpty(portEnv) && int.TryParse(portEnv, out var p) ? p : 5000;
+    Console.WriteLine($"Puerto configurado para Kestrel: {(string.IsNullOrEmpty(portEnv) ? "5000 (default)" : portEnv)}");
 
-    serverOptions.ListenAnyIP(port); // Usa puerto dinámico que asigna Render o local
+    serverOptions.ListenAnyIP(port);
 });
 
-// Obtener cadena de conexión desde configuración
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Validar conexión a base de datos
 try
 {
     using (var connection = new SqlConnection(connectionString))
@@ -72,7 +69,6 @@ builder.Services.AddControllers()
             System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All);
     });
 
-// Registrar PasswordHasher para inyección de dependencias
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -80,32 +76,48 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = "API VisitaTecnicaV2",
+        Title = "API VisitaTecnicaV3",
         Version = "v1"
     });
 });
 
 string corsPolicyName = "AllowFrontend";
+
+var corsOrigins = new[]
+{
+    "http://localhost:4200",
+    "https://fullpega.cl",
+    "https://www.fullpega.cl",
+    "https://visitatecnicav3.onrender.com",
+    "https://visita-tecnica-v3.vercel.app"
+};
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: corsPolicyName, policy =>
     {
-        policy.WithOrigins(
-                "http://localhost:4200",
-                "https://fullpega.cl",
-                "https://www.fullpega.cl",
-                "https://visitatecnicav3.onrender.com",
-                "https://visita-tecnica-v3.vercel.app"
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials(); // En caso de usar cookies o autorizaciones con credenciales
+        policy.WithOrigins(corsOrigins)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
-// Leer clave secreta robusta desde configuración estándar Jwt:Key
-var jwtKey = builder.Configuration["Jwt:Key"]
-    ?? throw new Exception("Jwt:Key no configurada en configuración");
+Console.WriteLine("CORS configurado para orígenes:");
+foreach (var origin in corsOrigins)
+{
+    Console.WriteLine($" - {origin}");
+}
+
+var jwtKey = builder.Configuration["Jwt:Key"];
+if (string.IsNullOrEmpty(jwtKey))
+{
+    Console.WriteLine("❌ Jwt:Key no configurada");
+}
+else
+{
+    Console.WriteLine("✅ Jwt:Key configurada correctamente");
+}
 
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "defaultIssuer";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "defaultAudience";
@@ -131,7 +143,8 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-// Activar swagger solo en desarrollo
+Console.WriteLine($"Aplicación iniciada en entorno: {app.Environment.EnvironmentName}");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -140,6 +153,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"[Request] {context.Request.Method} {context.Request.Path}");
+    await next();
+});
+
 app.UseCors(corsPolicyName);
 
 if (!app.Environment.IsDevelopment())
@@ -147,16 +166,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-// Middleware para autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();  // Mapear controladores
+app.MapControllers();
 
-// Esto es importante para login y otros endpoints públicos:
-// Marca los métodos login con [AllowAnonymous] para evitar bloqueo
-
-// Mantener solo endpoints auxiliares que no tienes en controlador
 app.MapPost("/api/validate-password", async (
     [FromServices] IPasswordHasher<User> passwordHasher,
     [FromBody] ValidatePasswordModel model) =>
@@ -165,13 +179,9 @@ app.MapPost("/api/validate-password", async (
     var result = passwordHasher.VerifyHashedPassword(user, model.PasswordHash, model.Password);
 
     if (result == PasswordVerificationResult.Success)
-    {
         return Results.Ok(new { Valid = true, Message = "Contraseña válida para el hash." });
-    }
     else
-    {
         return Results.BadRequest(new { Valid = false, Message = "Contraseña inválida para el hash." });
-    }
 });
 
 app.MapPost("/api/generate-password-hash", (
@@ -185,6 +195,5 @@ app.MapPost("/api/generate-password-hash", (
 
 app.Run();
 
-// Modelos para los endpoints auxiliares
 public record ValidatePasswordModel(string PasswordHash, string Password);
 public record PasswordModel(string Password);
