@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|c:\\users\\pablo\\onedrive\\documentos\\repositorios\\visitatecnicav3\\01-backend\\backendcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|solutionrelative:backendcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|c:\\users\\pablo\\onedrive\\documentos\\repositorios\\visitatecnicav3\\01-backend\\backendcore\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|solutionrelative:backendcore\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|c:\\users\\pablo\\onedrive\\documentos\\repositorios\\visitatecnicav3\\01-backend\\backendcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|solutionrelative:backendcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|c:\\users\\pablo\\onedrive\\documentos\\repositorios\\visitatecnicav3\\01-backend\\backendcore\\models\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3D2B024-C4FF-47A2-8592-C1780EDB83FB}|BackendCore\\BackendCore.csproj|solutionrelative:backendcore\\models\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UserToken.cs",
+              "DocumentMoniker": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Models\\UserToken.cs",
+              "RelativeDocumentMoniker": "BackendCore\\Models\\UserToken.cs",
+              "ToolTip": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Models\\UserToken.cs",
+              "RelativeToolTip": "BackendCore\\Models\\UserToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T00:57:29.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "BackendCore\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Controllers\\AuthController.cs",
               "RelativeToolTip": "BackendCore\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAUwI8AAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAOUAAAAAAAAAAAAUwPMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-23T05:41:53.51Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\appsettings.json",
-              "RelativeDocumentMoniker": "BackendCore\\appsettings.json",
-              "ToolTip": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\appsettings.json",
-              "RelativeToolTip": "BackendCore\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-23T05:26:59.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Program.cs",
-              "RelativeDocumentMoniker": "BackendCore\\Program.cs",
-              "ToolTip": "C:\\Users\\pablo\\OneDrive\\Documentos\\Repositorios\\VisitaTecnicaV3\\01-Backend\\BackendCore\\Program.cs",
-              "RelativeToolTip": "BackendCore\\Program.cs",
-              "ViewState": "AgIAAJIAAAAAAAAAAAAUwKYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T21:26:22.514Z",
               "EditorCaption": ""
             }
           ]
