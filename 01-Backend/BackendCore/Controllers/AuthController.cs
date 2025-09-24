@@ -9,9 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Http;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using DeviceDetectorNET;
 
 using SecurityClaim = System.Security.Claims.Claim;
 
@@ -31,6 +34,14 @@ namespace BackendCore.Controllers
             _context = context;
             _configuration = configuration;
             _logger = logger;
+        }
+
+        // Nuevo endpoint GET simple para "calentar" conexión
+        [HttpGet("render")]
+        public IActionResult RenderPing()
+        {
+            // Respuesta rápida 200 OK sin cuerpo
+            return Ok();
         }
 
         [HttpPost("login")]
@@ -132,11 +143,104 @@ namespace BackendCore.Controllers
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-            // Obtener datos del dispositivo y IP de HttpContext
-            var deviceInfo = Request.Headers["User-Agent"].ToString();
-            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            // Obtener User-Agent y parsear dispositivo
+            var userAgentString = Request.Headers["User-Agent"].ToString();
+            var dd = new DeviceDetector(userAgentString);
+            dd.Parse();
 
-            // Registrar token en la base de datos
+            var deviceType = dd.GetDeviceName() ?? "Unknown device";
+            var os = dd.GetOs();
+            var osName = os?.Match?.Name ?? "Unknown OS";
+            var osVersion = os?.Match?.Version ?? "";
+            var deviceInfo = $"{deviceType} - {osName} {osVersion}".Trim();
+
+            // Obtener la IP real
+            string ipAddress = null;
+            if (Request.Headers.ContainsKey("X-Forwarded-For"))
+            {
+                ipAddress = Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',').FirstOrDefault();
+            }
+            if (string.IsNullOrEmpty(ipAddress))
+            {
+                ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            }
+
+            _logger.LogInformation("Request Remote IP: {IP}", HttpContext.Connection.RemoteIpAddress?.ToString());
+            _logger.LogInformation("X-Forwarded-For header: {XFF}", Request.Headers["X-Forwarded-For"].ToString());
+            _logger.LogInformation("IP detectada antes de filtro: {IP}", ipAddress ?? "NULL");
+
+            bool IsPrivateIP(string ip)
+            {
+                if (IPAddress.TryParse(ip, out var parsedIp))
+                {
+                    var bytes = parsedIp.GetAddressBytes();
+                    switch (bytes[0])
+                    {
+                        case 10:
+                            return true;
+                        case 172:
+                            return bytes[1] >= 16 && bytes[1] <= 31;
+                        case 192:
+                            return bytes[1] == 168;
+                        default:
+                            return false;
+                    }
+                }
+                return false;
+            }
+
+            var isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+
+            if (ipAddress == "::1" || ipAddress == "127.0.0.1" || string.IsNullOrEmpty(ipAddress) || IsPrivateIP(ipAddress))
+            {
+                if (isDevelopment)
+                {
+                    ipAddress = "181.173.7.175";  // IP pública real para pruebas en desarrollo
+                    _logger.LogInformation("IP forzada en desarrollo a: {IP}", ipAddress);
+                }
+                else
+                {
+                    ipAddress = null; // No asignar en producción si es local o privada
+                }
+            }
+
+            // Obtener país solo si la IP es válida
+            string country = null;
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        var apiUrl = $"https://ipapi.co/{ipAddress}/country_name/";
+                        var response = await client.GetAsync(apiUrl);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            country = (await response.Content.ReadAsStringAsync())?.Trim();
+                            if (string.IsNullOrWhiteSpace(country) || country.ToLower() == "undefined")
+                                country = null;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "No se pudo obtener el país para IP: {IP}", ipAddress);
+                    country = null;
+                }
+            }
+
+            // Convertir UTC a hora local de Chile para QueryAt
+            DateTime queryAtLocal;
+            try
+            {
+                var chileTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Santiago");
+                queryAtLocal = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, chileTimeZone);
+            }
+            catch
+            {
+                queryAtLocal = DateTime.UtcNow; // fallback a UTC si falla
+            }
+
             var userToken = new UserToken
             {
                 UserId = user.RegID,
@@ -145,7 +249,10 @@ namespace BackendCore.Controllers
                 IPAddress = ipAddress,
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = tokenExpiration,
-                IsRevoked = false
+                IsRevoked = false,
+                Country = country,
+                QueryAt = queryAtLocal,  // Hora local Chile
+                SystemId = 3
             };
 
             try
@@ -157,7 +264,6 @@ namespace BackendCore.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error guardando token en BD para usuario RUT: {Rut}", normalizedRut);
-                // No se interrumpe el flujo, se retorna el token aunque no se haya guardado el token
             }
 
             _logger.LogInformation("Login exitoso para usuario RUT: {Rut}", normalizedRut);

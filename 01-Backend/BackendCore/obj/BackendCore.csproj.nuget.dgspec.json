@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "DeviceDetector.NET": {
+              "target": "Package",
+              "version": "[6.4.6, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.13.0, )"

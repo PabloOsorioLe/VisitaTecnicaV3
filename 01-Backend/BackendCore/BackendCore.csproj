@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
+    <PackageReference Include="DeviceDetector.NET" Version="6.4.6" />
     <PackageReference Include="MailKit" Version="4.13.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />

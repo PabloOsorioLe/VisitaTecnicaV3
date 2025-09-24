@@ -99,6 +99,20 @@
           }
         }
       },
+      "DeviceDetector.NET/6.4.6": {
+        "type": "package",
+        "dependencies": {
+          "LiteDB": "5.0.21",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.7",
+          "YamlDotNet": "16.3.0"
+        },
+        "compile": {
+          "lib/net8.0/DeviceDetector.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/DeviceDetector.NET.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -108,6 +122,22 @@
         },
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "LiteDB/5.0.21": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
             "related": ".xml"
           }
         }
@@ -1062,7 +1092,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.6": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.7": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -1200,11 +1230,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.6": {
+      "Microsoft.Extensions.Logging.Abstractions/9.0.7": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.6",
-          "System.Diagnostics.DiagnosticSource": "9.0.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.7",
+          "System.Diagnostics.DiagnosticSource": "9.0.7"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -1992,7 +2022,7 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/9.0.6": {
+      "System.Diagnostics.DiagnosticSource/9.0.7": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -2702,6 +2732,19 @@
             "rid": "win"
           }
         }
+      },
+      "YamlDotNet/16.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/YamlDotNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/YamlDotNet.dll": {
+            "related": ".xml"
+          }
+        }
       }
     }
   },
@@ -2795,6 +2838,24 @@
         "packageIcon.png"
       ]
     },
+    "DeviceDetector.NET/6.4.6": {
+      "sha512": "NpVqnzxQLbu0GRfl8trx/0Bpvz+4Kz7V3evkToduiSP47+pcPRXlanK0pCVAQKcuT5Ll7OquneiiZTfG0rbPUQ==",
+      "type": "package",
+      "path": "devicedetector.net/6.4.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "devicedetector.net.6.4.6.nupkg.sha512",
+        "devicedetector.net.nuspec",
+        "lib/net462/DeviceDetector.NET.dll",
+        "lib/net8.0/DeviceDetector.NET.dll",
+        "lib/net9.0/DeviceDetector.NET.dll",
+        "lib/netstandard2.0/DeviceDetector.NET.dll",
+        "logo.jpg"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -2811,6 +2872,26 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "LiteDB/5.0.21": {
+      "sha512": "ykJ7ffFl7P9YQKR/PLci6zupiLrsSCNkOTiw6OtzntH7d2kCYp5L1+3a/pksKgTEHcJBoPXFtg7VZSGVBseN9w==",
+      "type": "package",
+      "path": "litedb/5.0.21",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AppVeyorSettings.json",
+        "LICENSE",
+        "icon_64x64.png",
+        "lib/net45/LiteDB.dll",
+        "lib/net45/LiteDB.xml",
+        "lib/netstandard1.3/LiteDB.dll",
+        "lib/netstandard1.3/LiteDB.xml",
+        "lib/netstandard2.0/LiteDB.dll",
+        "lib/netstandard2.0/LiteDB.xml",
+        "litedb.5.0.21.nupkg.sha512",
+        "litedb.nuspec"
       ]
     },
     "MailKit/4.13.0": {
@@ -4611,10 +4692,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.6": {
-      "sha512": "0Zn6nR/6g+90MxskZyOOMPQvnPnrrGu6bytPwkV+azDcTtCSuQ1+GJUrg8Klmnrjk1i6zMpw2lXijl+tw7Q3kA==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.7": {
+      "sha512": "iPK1FxbGFr2Xb+4Y+dTYI8Gupu9pOi8I3JPuPsrogUmEhe2hzZ9LpCmolMEBhVDo2ikcSr7G5zYiwaapHSQTew==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.6",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4636,7 +4717,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -4801,10 +4882,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/9.0.6": {
-      "sha512": "LFnyBNK7WtFmKdnHu3v0HOYQ8BcjYuy0jdC9pgCJ/rbLKoJEG9/dBzSKMEeeWDbDeoWS0TIxOC8a9CM5ufca3A==",
+    "Microsoft.Extensions.Logging.Abstractions/9.0.7": {
+      "sha512": "sMM6NEAdUTE/elJ2wqjOi0iBWqZmSyaTByLF9e8XHv6DRJFFnOe0N+s8Uc6C91E4SboQCfLswaBIZ+9ZXA98AA==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/9.0.6",
+      "path": "microsoft.extensions.logging.abstractions/9.0.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4867,7 +4948,7 @@
         "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.9.0.6.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.9.0.7.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -6217,10 +6298,10 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/9.0.6": {
-      "sha512": "nikkwAKqpwWUvV5J8S9fnOPYg8k75Lf9fAI4bd6pyhyqNma0Py9kt+zcqXbe4TjJ4sTPcdYpPg81shYTrXnUZQ==",
+    "System.Diagnostics.DiagnosticSource/9.0.7": {
+      "sha512": "i0uHOKl+qabSYMpY8i676wgi8TI9D3yJIh9s8eog9xhcIqWiA+8khfYkAumCmTkJNMsI7qV527VTeSiQc6tPWA==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/9.0.6",
+      "path": "system.diagnostics.diagnosticsource/9.0.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6239,7 +6320,7 @@
         "lib/net9.0/System.Diagnostics.DiagnosticSource.xml",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.9.0.6.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.9.0.7.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -8163,11 +8244,35 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "YamlDotNet/16.3.0": {
+      "sha512": "SgMOdxbz8X65z8hraIs6hOEdnkH6hESTAIUa7viEngHOYaH+6q5XJmwr1+yb9vJpNQ19hCQY69xbFsLtXpobQA==",
+      "type": "package",
+      "path": "yamldotnet/16.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "images/yamldotnet.png",
+        "lib/net47/YamlDotNet.dll",
+        "lib/net47/YamlDotNet.xml",
+        "lib/net6.0/YamlDotNet.dll",
+        "lib/net6.0/YamlDotNet.xml",
+        "lib/net8.0/YamlDotNet.dll",
+        "lib/net8.0/YamlDotNet.xml",
+        "lib/netstandard2.0/YamlDotNet.dll",
+        "lib/netstandard2.0/YamlDotNet.xml",
+        "lib/netstandard2.1/YamlDotNet.dll",
+        "lib/netstandard2.1/YamlDotNet.xml",
+        "yamldotnet.16.3.0.nupkg.sha512",
+        "yamldotnet.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AspNetCore.Reporting >= 2.1.0",
+      "DeviceDetector.NET >= 6.4.6",
       "MailKit >= 4.13.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.2",
       "Microsoft.AspNetCore.Identity >= 2.3.1",
@@ -8231,6 +8336,10 @@
           "AspNetCore.Reporting": {
             "target": "Package",
             "version": "[2.1.0, )"
+          },
+          "DeviceDetector.NET": {
+            "target": "Package",
+            "version": "[6.4.6, )"
           },
           "MailKit": {
             "target": "Package",

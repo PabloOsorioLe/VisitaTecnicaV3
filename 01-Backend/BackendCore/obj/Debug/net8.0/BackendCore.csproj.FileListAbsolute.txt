@@ -221,8 +221,10 @@ C:\Users\Jossy\Documents\VisitaTecnicaV2\01-Backend\BackendCore\obj\Debug\net8.0
 C:\Users\Jossy\Documents\VisitaTecnicaV2\01-Backend\BackendCore\obj\Debug\net8.0\BackendCore.pdb
 C:\Users\Jossy\Documents\VisitaTecnicaV2\01-Backend\BackendCore\obj\Debug\net8.0\BackendCore.genruntimeconfig.cache
 C:\Users\Jossy\Documents\VisitaTecnicaV2\01-Backend\BackendCore\obj\Debug\net8.0\ref\BackendCore.dll
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.exe
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\appsettings.json
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.staticwebassets.endpoints.json
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Img\FirmaEmpresa-RoyalGlad.png
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Img\RoyalGlad SPA.png
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Img\RoyalGladCabecera.png
@@ -245,22 +247,14 @@ C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\Backe
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\LatoFont\OFL.txt
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.staticwebassets.endpoints.json
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.exe
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Fonts\OpenSans-Regular.ttf
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Fonts\OpenSans_Condensed-Regular.ttf
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Fonts\OpenSans_SemiCondensed-Regular.ttf
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Reports\RptInformeTecnico.rdlc
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.deps.json
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.runtimeconfig.json
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.dll
-C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.pdb
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\AspNetCore.Reporting.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\AspNetCore.ReportingServices.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\DeviceDetector.NET.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Humanizer.dll
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\LiteDB.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\MailKit.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -336,6 +330,7 @@ C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\Backe
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\YamlDotNet.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -451,5 +446,13 @@ C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\Backe
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\obj\Debug\net8.0\BackendCore.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\obj\Debug\net8.0\refint\BackendCore.dll
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\obj\Debug\net8.0\BackendCore.pdb
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Fonts\OpenSans-Regular.ttf
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Fonts\OpenSans_Condensed-Regular.ttf
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Fonts\OpenSans_SemiCondensed-Regular.ttf
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\Reports\RptInformeTecnico.rdlc
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.deps.json
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.runtimeconfig.json
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.dll
+C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\bin\Debug\net8.0\BackendCore.pdb
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\obj\Debug\net8.0\BackendCore.genruntimeconfig.cache
 C:\Users\pablo\OneDrive\Documentos\Repositorios\VisitaTecnicaV3\01-Backend\BackendCore\obj\Debug\net8.0\ref\BackendCore.dll
