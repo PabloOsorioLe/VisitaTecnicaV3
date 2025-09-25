@@ -112,14 +112,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     console.log('LoginComponent OnInit');
     sessionStorage.clear();
 
-    // GET a render/back para "calentar" sin esperar el resultado
-    const renderPromise = this.http.get('/api/auth/render').toPromise().catch(() => {});
+    // Dispara la petición 'calienta render' sin esperar respuesta
+    this.http.get('/api/auth/render').toPromise().catch(() => {});
 
-    // Espera 3 segundos mínimo, luego oculta loader
-    await Promise.all([
-      renderPromise,
-      new Promise(res => setTimeout(res, 3000))
-    ]);
+    // Muestra loader por 3 segundos como máximo, sin esperar render
+    await new Promise(res => setTimeout(res, 3000));
     this.cargando = false;
     this.cargandoVisible = false;
 
@@ -129,6 +126,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       history.pushState(null, '', location.href);
     };
 
+    // Detecta modo standalone PWA para mostrar prompt instalación
     const isStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as any).standalone === true;
@@ -162,6 +160,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       });
     }
 
+    // Mensaje para iOS Safari agregar a pantalla inicio
     const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     if (isIos && isSafari && localStorage.getItem('ios-dismissed') !== 'true') {
