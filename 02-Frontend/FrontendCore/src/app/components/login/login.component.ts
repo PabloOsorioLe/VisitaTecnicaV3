@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-  cargando: boolean = false;          // controla si se muestra el overlay
-  cargandoVisible: boolean = false;   // controla la clase para animación fade
+  cargando: boolean = true;              // inicialmente true (muestra loader)
+  cargandoVisible: boolean = true;       // opacidad a 1 para fade del loader
   usuario: string = '';
   password: string = '';
   mostrarPassword: boolean = false;
@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.cargando = true;          // mostrar overlay
-    this.cargandoVisible = true;   // poner opacidad 1
+    this.cargando = true;
+    this.cargandoVisible = true;
 
     const loginPayload = { rut: this.usuario, password: this.password };
 
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
         this.fadeOutLoader(() => {
           if (response.token) {
             sessionStorage.setItem('token', response.token);
-            // Mostrar alerta de éxito antes de navegar
             Swal.fire({
               icon: 'success',
               title: 'Credenciales correctas',
@@ -53,7 +52,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
               timer: 1500,
               background: 'rgba(24, 24, 24, 0.85)',
               color: '#99caff',
-              iconColor: '#28a745', // verde éxito
+              iconColor: '#28a745',
               customClass: {
                 popup: 'swal2-popup-custom',
                 title: 'swal2-title-custom'
@@ -102,28 +101,29 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   fadeOutLoader(callback: () => void) {
-    this.cargandoVisible = false;  // inicia transición: opacidad 1->0
+    this.cargandoVisible = false;
     setTimeout(() => {
-      this.cargando = false;       // oculta overlay
+      this.cargando = false;
       callback();
-    }, 500);  // duración igual a transición CSS
+    }, 500); // Sincronizado con transición de opacidad
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     console.log('LoginComponent OnInit');
-
     sessionStorage.clear();
 
-    // Petición anticipada para "calentar" backend sin esperar respuesta
-    this.http.get('/api/auth/render').subscribe({
-      next: () => {
-        console.log('Petición de render anticipada completada');
-      },
-      error: () => {
-        console.log('Petición de render anticipada falló o no es crítica');
-      }
-    });
+    // GET a render/back para "calentar" sin esperar el resultado
+    const renderPromise = this.http.get('/api/auth/render').toPromise().catch(() => {});
 
+    // Espera 3 segundos mínimo, luego oculta loader
+    await Promise.all([
+      renderPromise,
+      new Promise(res => setTimeout(res, 3000))
+    ]);
+    this.cargando = false;
+    this.cargandoVisible = false;
+
+    // Bloquea back del browser (mantiene tu lógica)
     history.pushState(null, '', location.href);
     window.onpopstate = () => {
       history.pushState(null, '', location.href);
@@ -132,13 +132,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const isStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as any).standalone === true;
-
     if (!isStandalone && localStorage.getItem('pwa-dismissed') !== 'true') {
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         this.deferredPrompt = e;
-        console.log('Evento beforeinstallprompt capturado');
-
         Swal.fire({
           toast: true,
           position: 'top',
@@ -150,20 +147,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
           cancelButtonText: 'No mostrar más',
           timer: 3000,
           timerProgressBar: true,
-          customClass: {
-            popup: 'swal2-popup-custom'
-          }
+          customClass: { popup: 'swal2-popup-custom' }
         }).then((result) => {
           if (result.isConfirmed && this.deferredPrompt) {
-            console.log('Usuario aceptó instalar la app');
             this.deferredPrompt.prompt();
             this.deferredPrompt.userChoice.then(() => {
               this.deferredPrompt = null;
             });
           }
-
           if (result.dismiss === Swal.DismissReason.cancel) {
-            console.log('Usuario canceló instalación PWA');
             localStorage.setItem('pwa-dismissed', 'true');
           }
         });
@@ -172,7 +164,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
     if (isIos && isSafari && localStorage.getItem('ios-dismissed') !== 'true') {
       Swal.fire({
         icon: 'info',
@@ -186,7 +177,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
         timer: 6000
       }).then(result => {
         if (result.dismiss === Swal.DismissReason.cancel) {
-          console.log('Usuario canceló mensaje instalación iOS');
           localStorage.setItem('ios-dismissed', 'true');
         }
       });
@@ -197,7 +187,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       if (this.usuarioInputRef) {
         this.usuarioInputRef.nativeElement.focus();
-        console.log('Input usuario enfocado');
       }
     }, 300);
   }
@@ -206,7 +195,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const target = event.target as HTMLElement;
     setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      console.log(`Scroll a input: ${target.id}`);
     }, 300);
   }
 }

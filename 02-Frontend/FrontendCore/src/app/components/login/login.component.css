@@ -256,8 +256,15 @@ input[type="password"]::-webkit-password-toggle-button {
 }
 
 .loading-overlay img {
-  width: 80px; /* tamaño gif */
+  width: 80px;
   height: 80px;
   user-select: none;
   -webkit-user-drag: none;
+  filter: brightness(1.5) drop-shadow(0 0 8px rgba(30, 90, 255, 0.75));
+}
+.gif-container {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  padding: 12px;
+  display: inline-block;
 }

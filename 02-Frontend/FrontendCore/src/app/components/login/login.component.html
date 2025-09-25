@@ -61,5 +61,7 @@
 
 <!-- Overlay loader con fondo difuminado y gif centrado -->
 <div class="loading-overlay" *ngIf="cargando" [class.oculto]="!cargandoVisible">
-  <img src="assets/gifs/Loading00.gif" alt="Cargando..." />
+  <div class="gif-container">
+    <img src="assets/gifs/Loading00.gif" alt="Cargando..." />
+  </div>
 </div>
