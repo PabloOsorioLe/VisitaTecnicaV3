@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-  cargando: boolean = true;              // inicialmente true (muestra loader)
-  cargandoVisible: boolean = true;       // opacidad a 1 para fade del loader
+  cargando: boolean = true;               // inicialmente true (muestra loader)
+  cargandoVisible: boolean = true;        // opacidad a 1 para fade del loader
   usuario: string = '';
   password: string = '';
   mostrarPassword: boolean = false;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private router: Router,
     private idleService: IdleTimeoutService,
     private http: HttpClient
-  ) {}
+  ) { }
 
   iniciarSesion(): void {
     if (!this.usuario || !this.password) {
@@ -112,21 +112,26 @@ export class LoginComponent implements OnInit, AfterViewInit {
     console.log('LoginComponent OnInit');
     sessionStorage.clear();
 
-    // Dispara la petición 'calienta render' sin esperar respuesta
-    this.http.get('/api/auth/render').toPromise().catch(() => {});
+    // PRE-CARGA: envía POST con rut y clave dummy, no espera respuesta
+    const precargaPayload = { rut: '99999999-9', password: 'dummy' };
+    this.http.post('/api/auth/login', precargaPayload)
+      .subscribe({
+        next: () => { /* no importa resultado */ },
+        error: () => { /* ignora error, solo despierta backend */ }
+      });
 
-    // Muestra loader por 3 segundos como máximo, sin esperar render
+    // Loader visual por 3 segundos
     await new Promise(res => setTimeout(res, 3000));
     this.cargando = false;
     this.cargandoVisible = false;
 
-    // Bloquea back del browser (mantiene tu lógica)
+    // Bloquear back del browser
     history.pushState(null, '', location.href);
     window.onpopstate = () => {
       history.pushState(null, '', location.href);
     };
 
-    // Detecta modo standalone PWA para mostrar prompt instalación
+    // Detectar modo PWA y mostrar prompt de instalación
     const isStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as any).standalone === true;
