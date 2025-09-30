@@ -108,84 +108,24 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }, 500); // Sincronizado con transición de opacidad
   }
 
-  async ngOnInit(): Promise<void> {
+ async ngOnInit(): Promise<void> {
     console.log('LoginComponent OnInit');
     sessionStorage.clear();
 
-    // PRE-CARGA: envía POST con rut y clave dummy, no espera respuesta
-    const precargaPayload = { rut: '99999999-9', password: 'dummy' };
-    this.http.post('/api/auth/login', precargaPayload)
-      .subscribe({
-        next: () => { /* no importa resultado */ },
-        error: () => { /* ignora error, solo despierta backend */ }
-      });
+    // CALENTAR backend y SQL con GET
+    this.http.get('/api/auth/warmup').subscribe({
+      next: () => { /* opcional: puedes loggear "Backend ready" */ },
+      error: () => { /* ignora/oculta error; objetivo es warm-up backend */ }
+    });
 
-    // Loader visual por 3 segundos
+    // Continúa como ya tienes:
     await new Promise(res => setTimeout(res, 3000));
     this.cargando = false;
     this.cargandoVisible = false;
 
-    // Bloquear back del browser
-    history.pushState(null, '', location.href);
-    window.onpopstate = () => {
-      history.pushState(null, '', location.href);
-    };
+    // ... resto de tu código (PWA, iOS, etc)
+}
 
-    // Detectar modo PWA y mostrar prompt de instalación
-    const isStandalone =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as any).standalone === true;
-    if (!isStandalone && localStorage.getItem('pwa-dismissed') !== 'true') {
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        this.deferredPrompt = e;
-        Swal.fire({
-          toast: true,
-          position: 'top',
-          icon: 'info',
-          title: '¿Deseas instalar esta aplicación?',
-          showConfirmButton: true,
-          confirmButtonText: 'Instalar',
-          showCancelButton: true,
-          cancelButtonText: 'No mostrar más',
-          timer: 3000,
-          timerProgressBar: true,
-          customClass: { popup: 'swal2-popup-custom' }
-        }).then((result) => {
-          if (result.isConfirmed && this.deferredPrompt) {
-            this.deferredPrompt.prompt();
-            this.deferredPrompt.userChoice.then(() => {
-              this.deferredPrompt = null;
-            });
-          }
-          if (result.dismiss === Swal.DismissReason.cancel) {
-            localStorage.setItem('pwa-dismissed', 'true');
-          }
-        });
-      });
-    }
-
-    // Mensaje para iOS Safari agregar a pantalla inicio
-    const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (isIos && isSafari && localStorage.getItem('ios-dismissed') !== 'true') {
-      Swal.fire({
-        icon: 'info',
-        title: '¿Deseas instalar esta app?',
-        html: 'Presiona <strong>Compartir</strong> y luego <strong>"Agregar a pantalla de inicio"</strong>',
-        toast: true,
-        position: 'top',
-        showConfirmButton: false,
-        showCancelButton: true,
-        cancelButtonText: 'No mostrar más',
-        timer: 6000
-      }).then(result => {
-        if (result.dismiss === Swal.DismissReason.cancel) {
-          localStorage.setItem('ios-dismissed', 'true');
-        }
-      });
-    }
-  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {

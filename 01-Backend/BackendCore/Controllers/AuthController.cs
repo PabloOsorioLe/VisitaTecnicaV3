@@ -36,13 +36,21 @@ namespace BackendCore.Controllers
             _logger = logger;
         }
 
-        // Nuevo endpoint GET simple para "calentar" conexión
-        [HttpGet("render")]
-        public IActionResult RenderPing()
+        [HttpGet("warmup")]
+        public async Task<IActionResult> WarmUpUser()
         {
-            // Respuesta rápida 200 OK sin cuerpo
-            return Ok();
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Rut == "12345678-9");
+                return Ok(); // No importa el resultado para el warm-up.
+            }
+            catch
+            {
+                // Manejo opcional, pero el objetivo es solo "despertar" la DB/pool.
+                return StatusCode(500);
+            }
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel login)

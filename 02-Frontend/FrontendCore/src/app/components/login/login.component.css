@@ -14,9 +14,8 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: rgba(10,10,10,0.9);
-  z-index: 0; /* que esté debajo del login */
-  pointer-events: none; /* para que no interfiera con clicks */
-  /* los gradientes y animaciones que tengas */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .login-background::before {
@@ -53,7 +52,7 @@ body {
   50% { opacity: 0.9; }
 }
 
-/* Contenedor del login con fondo tipo panel Windows, borde y sombra azul */
+/* Contenedor del login */
 .login-container {
   position: fixed;
   top: 50%;
@@ -61,8 +60,8 @@ body {
   transform: translate(-50%, -50%);
   z-index: 10;
   width: 90%;
-  max-width: 380px; /* ✅ límite máximo para PC grande */
-  padding: 2rem;    /* ✅ padding responsive */
+  max-width: 380px;
+  padding: 2rem;
   background: rgba(20,20,20,0.75);
   color: white;
   border-radius: 12px;
@@ -87,7 +86,7 @@ body {
 
 .login-container .form-control:focus {
   background-color: rgba(50, 50, 50, 0.8);
-  border-color: #3565c1; /* azul más vivo */
+  border-color: #3565c1;
   color: #fff;
   box-shadow: none;
 }
@@ -97,9 +96,9 @@ body {
   color: #bbb;
 }
 
-/* Botón Ingresar con clases propias para poder controlar */
+/* Botón Ingresar */
 .btn-login {
-  background-color: #3565c1; /* azul vivo */
+  background-color: #3565c1;
   box-shadow: 0 0 10px rgba(53, 101, 193, 0.8);
   border: none;
   font-weight: 600;
@@ -108,12 +107,12 @@ body {
 }
 
 .btn-login:hover {
-  background-color: #254d8a; /* azul oscuro */
+  background-color: #254d8a;
   box-shadow: 0 0 15px rgba(37, 77, 138, 0.9);
-  color: rgba(255, 255, 255, 0.95); /* un poco más claro al hover */
+  color: rgba(255, 255, 255, 0.95);
 }
 
-/* Botón para mostrar/ocultar contraseña */
+/* Botón mostrar/ocultar contraseña */
 .login-container .btn-outline-secondary {
   border-color: rgba(255, 255, 255, 0.3);
   color: #ddd;
@@ -132,7 +131,7 @@ body {
 }
 
 .login-container a:hover {
-  color: #c0d8ff; /* azul un poco más claro al pasar el mouse */
+  color: #c0d8ff;
   text-decoration: underline;
 }
 
@@ -150,14 +149,14 @@ input[type="password"]::-webkit-password-toggle-button {
   display: none !important;
 }
 
-/* Tamaño y padding más pequeño */
+/* Tamaño y padding más pequeño para SweetAlert */
 .swal2-popup-custom {
   font-size: 0.9rem !important;
   padding: 1.2rem !important;
   border-radius: 10px !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 0 15px rgba(51, 153, 255, 0.4); /* sombra azul suave */
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.4);
 }
 
 .swal2-title-custom {
@@ -190,9 +189,7 @@ input[type="password"]::-webkit-password-toggle-button {
   .btn-login {
     font-size: 1rem;
     padding: 0.75rem;
-    /* texto en azul más apagado */
     color: rgba(255, 255, 255, 0.85);
-    /* mantén el fondo original */
     background-color: #3565c1;
     box-shadow: 0 0 10px rgba(53, 101, 193, 0.8);
     border: none;
@@ -210,7 +207,7 @@ input[type="password"]::-webkit-password-toggle-button {
 }
 
 .swal2-container.mi-overlay {
-  background-color: rgba(0, 0, 0, 0.6) !important; /* Más oscuro */
+  background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .swal2-popup.mi-alerta {
@@ -219,52 +216,64 @@ input[type="password"]::-webkit-password-toggle-button {
 }
 
 .btn-password-toggle {
-  background-color: transparent !important;  /* Fondo transparente */
-  border: 1px solid rgba(255, 0, 0, 0.5);   /* Borde rojo suave */
-  color: rgba(255, 0, 0, 0.7);               /* Color rojo suave para icono */
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  color: rgba(255, 0, 0, 0.7);
   padding: 0.25rem 0.5rem;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-password-toggle:hover {
-  background-color: transparent !important; /* Sin fondo al pasar mouse */
+  background-color: transparent !important;
   border-color: rgba(255, 0, 0, 0.8);
   color: rgba(255, 0, 0, 1);
 }
 
-/* Estilos del overlay del loader */
+/* MODIFICACIÓN PARA GIF MÁS NOTORIO */
+
+/* Overlay del loader mejorado */
 .loading-overlay {
   position: fixed; 
   top: 0; 
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(10, 10, 10, 0.75); /* fondo oscuro difuminado */
+  background-color: rgba(20, 24, 38, 0.93); /* Fondo más opaco y azulado */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;  /* prioridad alta para estar encima de todo */
-  pointer-events: all; /* bloquea interacciones debajo */
-  
+  z-index: 1000;
+  pointer-events: all;
   opacity: 1;
-  transition: opacity 0.5s ease; /* transición para el fade */
+  transition: opacity 0.5s ease;
 }
 
 .loading-overlay.oculto {
   opacity: 0;
-  pointer-events: none; /* permite clicks cuando está oculto */
+  pointer-events: none;
 }
 
+/* Contenedor visual muy notorio */
+.gif-container {
+  background: rgba(255,255,255,0.70);
+  border-radius: 50%;
+  padding: 18px;
+  display: inline-block;
+  box-shadow: 0 0 24px 8px rgba(0,0,0,0.45), 0 0 1px 3px rgba(53,101,193,0.15);
+}
+
+/* Imagen más grande y brillante */
 .loading-overlay img {
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
   user-select: none;
   -webkit-user-drag: none;
-  filter: brightness(1.5) drop-shadow(0 0 8px rgba(30, 90, 255, 0.75));
+  filter: brightness(2.2) drop-shadow(0 0 12px rgba(255,255,255,0.7));
+  border-radius: 16px;
 }
-.gif-container {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  padding: 12px;
-  display: inline-block;
+
+/* Responsive: gif aún más grande en móvil */
+@media (max-width: 576px) {
+  .gif-container { padding: 28px; }
+  .loading-overlay img { width: 120px; height: 120px; }
 }
