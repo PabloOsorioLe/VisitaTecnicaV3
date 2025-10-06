@@ -229,51 +229,49 @@ input[type="password"]::-webkit-password-toggle-button {
   color: rgba(255, 0, 0, 1);
 }
 
-/* MODIFICACIÓN PARA GIF MÁS NOTORIO */
+/* ===== MODIFICACIÓN LOADER PEQUEÑO Y MODERNO ===== */
 
-/* Overlay del loader mejorado */
+/* Overlay del loader modernizado */
 .loading-overlay {
-  position: fixed; 
-  top: 0; 
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(20, 24, 38, 0.93); /* Fondo más opaco y azulado */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(80,80,80,0.22); /* Gris translúcido */
+  display: flex; justify-content: center; align-items: center;
   z-index: 1000;
   pointer-events: all;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
+/* Ocultar transición */
 .loading-overlay.oculto {
   opacity: 0;
   pointer-events: none;
 }
 
-/* Contenedor visual muy notorio */
+/* Contenedor del gif: compacto y circular */
 .gif-container {
-  background: rgba(255,255,255,0.70);
+  background: rgba(255,255,255,0.32);
   border-radius: 50%;
-  padding: 18px;
+  padding: 10px;
   display: inline-block;
-  box-shadow: 0 0 24px 8px rgba(0,0,0,0.45), 0 0 1px 3px rgba(53,101,193,0.15);
+  box-shadow: 0 0 10px 2px rgba(50,60,80,0.32), 0 0 14px rgba(165,195,255,0.10);
 }
 
-/* Imagen más grande y brillante */
+/* Loader pequeño, brillante y redondo */
 .loading-overlay img {
-  width: 96px;
-  height: 96px;
+  width: 48px;
+  height: 48px;
   user-select: none;
   -webkit-user-drag: none;
-  filter: brightness(2.2) drop-shadow(0 0 12px rgba(255,255,255,0.7));
-  border-radius: 16px;
+  filter: brightness(2.4) drop-shadow(0 0 8px #9ac9ff);
+  border-radius: 50%;
+  background: transparent;
 }
 
-/* Responsive: gif aún más grande en móvil */
+/* Responsive móvil: loader más grande si se necesita */
 @media (max-width: 576px) {
-  .gif-container { padding: 28px; }
-  .loading-overlay img { width: 120px; height: 120px; }
+  .gif-container { padding: 16px; }
+  .loading-overlay img { width: 68px; height: 68px; }
 }
